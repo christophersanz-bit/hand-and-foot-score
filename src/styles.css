@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+
+  --color-felt: #121a16;
+  --color-felt-fg: #e7eee8;
+  --color-felt-muted: #8a9388;
+  --color-felt-line: #2a3830;
+  --color-felt-elev: #1a2420;
+
+  --color-paper: #f3eee4;
+  --color-paper-fg: #1a1c18;
+  --color-paper-muted: #6e7268;
+  --color-paper-line: #d9d2c3;
+  --color-paper-inset: #eae4d8;
+  --color-paper-deep: #e4ddd0;
+
+  --color-primary: #1f3d32;
+  --color-primary-fg: #f3eee4;
+  --color-ring: #c5cdc4;
+  --color-destructive: #8f3b3b;
+  --color-destructive-fg: #f3eee4;
+  --color-success: #2f5d45;
+  --color-suit-red: #8f3b3b;
+
+  --color-bg: #121a16;
+  --color-fg: #e7eee8;
+  --color-surface: #1a2420;
+  --color-muted: #8a9388;
+  --color-border: #2a3830;
+
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --shadow-paper:
+    0 1px 0 0 rgb(0 0 0 / 0.04), 0 18px 40px -20px rgb(0 0 0 / 0.45);
+  --shadow-felt: 0 0 0 1px rgb(255 255 255 / 0.06);
+
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-quick: 150ms;
+  --duration-fast: 250ms;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: dark;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+    background: var(--color-felt);
+    color: var(--color-felt-fg);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(rgb(255 255 255 / 0.035) 0.6px, transparent 0.6px);
+    background-size: 3px 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-family: var(--font-display);
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+@layer utilities {
+  .safe-top {
+    padding-top: max(0.75rem, env(safe-area-inset-top));
+  }
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  .safe-x {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
